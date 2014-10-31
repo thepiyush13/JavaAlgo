@@ -70,7 +70,7 @@ public class LinkLists {
 			if(fastP==slowP)return 1;
 			//check if ll has ended
 			if(fastP.next()==null)return 0;
-			//all good create speed difference
+			//all good create speed difference 
 			fastP.next();
 			if(fastP==slowP)return 1;
 			slowP.next();
