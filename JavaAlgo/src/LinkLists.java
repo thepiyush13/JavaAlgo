@@ -14,7 +14,22 @@ public class LinkLists {
 		
 		
 	}
+	public static void print(Object item){
+		System.out.println(item);
+		
+	}
 	
+	public static LinkedList<Integer> GetRandLL(){
+		LinkedList<Integer> rndll = new LinkedList<Integer>();
+		Integer i=20;
+		while(i!=0){
+			rndll.add((int) ( Math.random()*(40-20) ));			
+			i--;
+		}
+		
+		
+		return rndll;
+	}
 	
 	//nth node from end of a linked list
 	static void one(LinkedList ll){
@@ -40,24 +55,35 @@ public class LinkLists {
 		
 	}
 	
-	
-	
-	public static void print(Object item){
-		System.out.println(item);
-		
-	}
-	
-	public static LinkedList<Integer> GetRandLL(){
-		LinkedList<Integer> rndll = new LinkedList<Integer>();
-		Integer i=20;
-		while(i!=0){
-			rndll.add((int) ( Math.random()*(40-20) ));			
-			i--;
+	//finding if the linked list is circular or not 
+	static int isLLCircular(LinkedList ll){
+		LinkedList<Integer> l1 = ll;
+		LinkedList<Integer> l2 = ll;
+		ListIterator<Integer> slowP = l1.listIterator();
+		ListIterator<Integer> fastP = l2.listIterator();
+		//if two pointers move at a different speed in circular list the fast one eventually catch up with the slower one
+		//run till there is no edge case		
+		while(true){
+			//create speed diference 
+			fastP.next();
+			//check if they form a single loop
+			if(fastP==slowP)return 1;
+			//check if ll has ended
+			if(fastP.next()==null)return 0;
+			//all good create speed difference
+			fastP.next();
+			if(fastP==slowP)return 1;
+			slowP.next();
 		}
 		
+		//also there is hash method 
+		//like dup array find method using O(n)
 		
-		return rndll;
 	}
+	
+	
+	
+	
 	
 }
 
